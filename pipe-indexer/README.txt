@@ -15,7 +15,7 @@ solr-pipe.conf
 * Change your file location in go-solr-pipe.sh source folder for the map job, stubbed for
 /user/cloudera/global_terrorism_database.txt by default
 
-If you want to remove the index files after a demo or to cleanup, you should run delete docs using solrctl before
+* If you want to remove the index files after a demo or to cleanup, you should run delete docs using solrctl before
 deleting and removing the collection.
 
-run go-solr-pipe.sh clean to get to 'clean' slate
+* run go-solr-pipe.sh clean to get to 'clean' slate

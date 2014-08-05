@@ -1,7 +1,11 @@
+* csv indexer, but the default file is tab delimited.
+
+* CSV morphline command takes separator param.
+
 * This is a self contained test data set with csv delimiter.  The idea is to be able
 to test that you can get SOLR working and indexing the test data set csv delimited, then
 modify from there for what you ACTUALLY need.
-  *upload the csv file to /user/cloudera to test
+  *upload the sample_07 csv file to /user/cloudera to test
 
 To adapt this for different data:
 * If you want to change the default collection name used, change the COLLECTION variable in:

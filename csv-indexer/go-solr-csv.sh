@@ -14,9 +14,9 @@ COLLECTION=INDEXED-CSV-DATA
 # Clean UP
 if [ "$1" == "clean" ]; then
   rm -rf $PROJECT_HOME
-  solrctl collection --deletedocs INDEXED-PIPE-DATA
-  solrctl collection --delete INDEXED-PIPE-DATA
-  solrctl instancedir --delete INDEXED-PIPE-DATA
+  solrctl collection --deletedocs $COLLECTION
+  solrctl collection --delete $COLLECTION
+  solrctl instancedir --delete $COLLECTION
   hadoop fs -rmdir --ignore-fail-on-non-empty /solr/$COLLECTION
 else
 
@@ -47,10 +47,10 @@ hadoop fs -mkdir -p  /user/cloudera/tmp/solroutdir
 
 ## Do Indexing - Insert your source directory at end of hadoop jar command
 # Dry-Run to test Morphline
-# hadoop jar /opt/cloudera/parcels/CDH/lib/solr/contrib/mr/search-mr-*-job.jar org.apache.solr.hadoop.MapReduceIndexerTool -D 'mapred.child.java.opts=-Xmx500m' --log4j $PROJECT_HOME/log4j.properties --morphline-file $PROJECT_HOME/solr-csv.conf --output-dir hdfs://localhost:8020/user/cloudera/tmp/solroutdir --verbose --go-live --zk-host localhost:2181/solr --collection $COLLECTION --dry-run hdfs://localhost:8020/user/hive/warehouse/
+# hadoop jar /opt/cloudera/parcels/CDH/lib/solr/contrib/mr/search-mr-*-job.jar org.apache.solr.hadoop.MapReduceIndexerTool -D 'mapred.child.java.opts=-Xmx500m' --log4j $PROJECT_HOME/log4j.properties --morphline-file $PROJECT_HOME/solr-csv.conf --output-dir hdfs://localhost:8020/user/cloudera/tmp/solroutdir --verbose --go-live --zk-host localhost:2181/solr --collection $COLLECTION --dry-run hdfs://localhost:8020/user/cloudera/sample_07
 
 # Without Dry-run
-hadoop jar /opt/cloudera/parcels/CDH/lib/solr/contrib/mr/search-mr-*-job.jar org.apache.solr.hadoop.MapReduceIndexerTool -D 'mapred.child.java.opts=-Xmx500m' --log4j $PROJECT_HOME/log4j.properties --morphline-file $PROJECT_HOME/solr-csv.conf --output-dir hdfs://localhost:8020/user/cloudera/tmp/solroutdir --verbose --go-live --zk-host localhost:2181/solr --collection $COLLECTION hdfs://localhost:8020/user/hive/warehouse/
+hadoop jar /opt/cloudera/parcels/CDH/lib/solr/contrib/mr/search-mr-*-job.jar org.apache.solr.hadoop.MapReduceIndexerTool -D 'mapred.child.java.opts=-Xmx500m' --log4j $PROJECT_HOME/log4j.properties --morphline-file $PROJECT_HOME/solr-csv.conf --output-dir hdfs://localhost:8020/user/cloudera/tmp/solroutdir --verbose --go-live --zk-host localhost:2181/solr --collection $COLLECTION hdfs://localhost:8020/user/cloudera/sample_07
 
 echo "Finished!"
 echo SEARCH TIPS: 

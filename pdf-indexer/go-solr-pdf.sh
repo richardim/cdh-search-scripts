@@ -8,6 +8,9 @@
 export PROJECT_HOME=/home/cloudera/pdf-solr
 # export SOLR_HOME=/opt/cloudera/parcels/CDH/lib/solr
 
+# Not Ideal, but a symlink to this file referenced in solr-pdf.conf
+ln -s /opt/cloudera/parcels/CDH/share/doc/search-1.0.0+cdh5.1.0+0/examples/solr-nrt/custom-mimetypes.xml /home/cloudera/pdf-indexer/custom-mimetypes.xml
+
 # Collection name for SOLR
 COLLECTION=INDEXED-PDF-DATA
 

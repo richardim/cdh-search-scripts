@@ -8,9 +8,6 @@
 export PROJECT_HOME=/home/cloudera/pdf-solr
 # export SOLR_HOME=/opt/cloudera/parcels/CDH/lib/solr
 
-# Not Ideal, but a symlink to this file referenced in solr-pdf.conf
-ln -s /opt/cloudera/parcels/CDH/share/doc/search-1.0.0+cdh5.1.0+0/examples/solr-nrt/custom-mimetypes.xml /home/cloudera/pdf-indexer/custom-mimetypes.xml
-
 # Collection name for SOLR
 COLLECTION=INDEXED-PDF-DATA
 
@@ -31,6 +28,7 @@ mkdir $PROJECT_HOME
 # Copy reference files for execution
 cp solr-pdf.conf $PROJECT_HOME/
 cp log4j-solr-pdf.properties $PROJECT_HOME/log4j.properties
+# cp /opt/cloudera/parcels/CDH/share/doc/search-1.0.0+cdh5.1.0+0/examples/solr-nrt/custom-mimetypes.xml $PROJECT_HOME/custom-mimetypes.xml
 
 # Initialize local directory with reference files to upload to solr/zookeeper
 # See http://svn.apache.org/viewvc/lucene/dev/trunk/solr/example/solr/README.txt?view=markup
